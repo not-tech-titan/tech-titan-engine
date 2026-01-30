@@ -9,12 +9,12 @@ int main()
     // will be handles by settings later
     const int screenWidth = 800;
     const int screenHeight = 600;
-    InitWindow(screenWidth, screenHeight, "Space Blaster");
+    InitWindow(screenWidth, screenHeight, "Space Storm");
 
     SetTargetFPS(60);
 
     // Manually creating entities for now
-    Entity player({ 100, 500, 0 }, { 25, 25, 1 }, BLUE);
+    Entity player({ 100, 500, 0 }, { 25, 25, 1 }, YELLOW);
     Entity enemy({ 100, 100, 0 }, { 25, 25, 1 }, RED);
     Entity bullet({ 0,0,0 }, { 5, 10, 1 }, YELLOW);
     Entity bullet2({ 0,0,0 }, { 5, 10, 1 }, YELLOW);
