@@ -1,0 +1,6 @@
+Tools 0 0 256 197 1
+Scene 512 0 770 451 1
+Console 0 192 515 527 1
+Options 512 448 425 271 1
+Inspector 928 448 353 271 1
+FileExplorer 256 0 263 193 1

@@ -1,4 +1,7 @@
 ﻿C:\Program Files\Microsoft Visual Studio\18\Community\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(534,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  LINK : C:\Users\Titan\Desktop\Titan Engine\Builds\Engine\Engine.exe not found or not built by the last incremental link; performing full link
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  main.cpp
+C:\Users\Titan\Desktop\Titan Engine\Engine\main.cpp(65,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Titan\Desktop\Titan Engine\Engine\main.cpp(66,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Titan\Desktop\Titan Engine\Engine\main.cpp(72,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Titan\Desktop\Titan Engine\Engine\main.cpp(73,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Engine.vcxproj -> C:\Users\Titan\Desktop\Titan Engine\Builds\Engine\Engine.exe
