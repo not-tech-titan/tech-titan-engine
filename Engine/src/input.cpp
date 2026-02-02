@@ -4,14 +4,14 @@ void Input::Update(float deltaTime)
 {
     MoveAxis = { 0.0f, 0.0f };
 
-    if (IsKeyDown(KEY_LEFT))
+    if (IsKeyDown(KEY_A))
         MoveAxis.x -= 1.0f;
-    if (IsKeyDown(KEY_RIGHT))
+    if (IsKeyDown(KEY_D))
         MoveAxis.x += 1.0f;
 
-    if (IsKeyDown(KEY_UP))
+    if (IsKeyDown(KEY_W))
         MoveAxis.y -= 1.0f;
-    if (IsKeyDown(KEY_DOWN))
+    if (IsKeyDown(KEY_S))
         MoveAxis.y += 1.0f;
 
     Attack = IsKeyDown(KEY_LEFT_CONTROL);
