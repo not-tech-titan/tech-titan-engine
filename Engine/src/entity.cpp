@@ -4,12 +4,27 @@ Entity::Entity(Vector3 startPos, Vector3 startSize, Color startColor)
 {
     position = startPos;
     size = startSize;
-    color = startColor;
+    color = startColor; 
+    
 }
 
 void Entity::Update(float deltaTime)
 {
+    position.x += velocity.x * deltaTime;
+    position.y += velocity.y * deltaTime;
+    position.z += velocity.z * deltaTime;
 
+    // friction
+    velocity.x *= friction;
+    velocity.y *= friction;
+    velocity.z *= friction;
+}
+
+void Entity::AddForce(Vector3 force)
+{
+    velocity.x += force.x;
+    velocity.y += force.y;
+    velocity.z += force.z;
 }
 
 void Entity::Draw() const

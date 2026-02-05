@@ -29,9 +29,10 @@ if errorlevel 1 (
 echo Compiling...
 
 :: Put .obj files into build folder with /Fo
-cl /EHsc /MD /I"%INCLUDE_PATH%" /Fo"%BUILD_PATH%\\" /Fe"%BUILD_PATH%\%EXE_NAME%" "%SRC_PATH%\*.cpp" /link /LIBPATH:"%LIB_PATH%" ^
+cl /EHsc /MD /std:c++17 /I"%INCLUDE_PATH%" /Fo"%BUILD_PATH%\\" /Fe"%BUILD_PATH%\%EXE_NAME%" "%SRC_PATH%\*.cpp" /link /LIBPATH:"%LIB_PATH%" ^
     raylib.lib ^
     opengl32.lib gdi32.lib user32.lib kernel32.lib winmm.lib shell32.lib advapi32.lib
+
 
 :: -------------------------------
 :: CHECK BUILD SUCCESS

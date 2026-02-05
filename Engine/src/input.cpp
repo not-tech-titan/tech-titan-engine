@@ -1,21 +1,81 @@
 #include "input.h"
 
-void Input::Update(float deltaTime)
+std::unordered_map<std::string, Input::Vector2Action> Input::vector2Actions;
+std::unordered_map<std::string, Input::ButtonAction> Input::buttonActions;
+
+void Input::Init() {}
+
+void Input::Shutdown() {}
+
+void Input::RegisterVector2(const std::string& name) {
+    vector2Actions[name] = {};
+}
+
+void Input::RegisterButton(const std::string& name) {
+    buttonActions[name] = {};
+}
+
+void Input::BindVector2(
+    const std::string& action,
+    KeyboardKey left,
+    KeyboardKey right,
+    KeyboardKey up,
+    KeyboardKey down
+)
 {
-    MoveAxis = { 0.0f, 0.0f };
+    auto& a = vector2Actions[action];
+    a.negX = left;
+    a.posX = right;
+    a.negY = up;
+    a.posY = down;
+}
 
-    if (IsKeyDown(KEY_A))
-        MoveAxis.x -= 1.0f;
-    if (IsKeyDown(KEY_D))
-        MoveAxis.x += 1.0f;
 
-    if (IsKeyDown(KEY_W))
-        MoveAxis.y -= 1.0f;
-    if (IsKeyDown(KEY_S))
-        MoveAxis.y += 1.0f;
+void Input::BindKey(const std::string& action, KeyboardKey key) {
+    buttonActions[action].key = key;
+}
 
-    Attack = IsKeyDown(KEY_LEFT_CONTROL);
-    Interact = IsKeyDown(KEY_SPACE);
-    Run = IsKeyDown(KEY_LEFT_SHIFT);
-    Pause = IsKeyPressed(KEY_ENTER);
-} 
+void Input::BindMouseButton(const std::string& action, MouseButton button) {
+    buttonActions[action].mouse = button;
+}
+
+void Input::Update() {
+    // Vector2 actions
+    for (auto& [name, action] : vector2Actions) {
+        float x = 0;
+        float y = 0;
+
+        if (IsKeyDown(action.negX)) x -= 1;
+        if (IsKeyDown(action.posX)) x += 1;
+        if (IsKeyDown(action.negY)) y -= 1;
+        if (IsKeyDown(action.posY)) y += 1;
+
+        action.value = { x, y };
+    }
+
+    // Button actions
+    for (auto& [name, action] : buttonActions) {
+        bool down = false;
+
+        if (action.key != 0)
+            down |= IsKeyDown(action.key);
+
+        if (action.mouse != 0)
+            down |= IsMouseButtonDown(action.mouse);
+
+        action.pressed = down && !action.value;
+        action.value = down;
+    }
+}
+
+Vector2 Input::GetVector2(const std::string& action) {
+    return vector2Actions[action].value;
+}
+
+bool Input::GetButton(const std::string& action) {
+    return buttonActions[action].value;
+}
+
+bool Input::GetButtonPressed(const std::string& action) {
+    return buttonActions[action].pressed;
+}
