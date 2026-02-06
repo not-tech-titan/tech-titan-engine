@@ -5,7 +5,7 @@ Entity::Entity(Vector3 startPos, Vector3 startSize, Color startColor)
     position = startPos;
     size = startSize;
     color = startColor; 
-    
+    velocity = {0,0,0};
 }
 
 void Entity::Update(float deltaTime)

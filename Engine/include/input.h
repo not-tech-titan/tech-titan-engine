@@ -3,7 +3,8 @@
 #include <unordered_map>
 #include "raylib.h"
 
-class Input {
+class Input 
+{
 public:
     // Lifecycle
     static void Init();
@@ -25,13 +26,15 @@ public:
     static bool GetButtonPressed(const std::string& action);
 
 private:
-    struct Vector2Action {
+    struct Vector2Action 
+    {
         KeyboardKey negX, posX;
         KeyboardKey negY, posY;
         Vector2 value;
     };
 
-    struct ButtonAction {
+    struct ButtonAction 
+    {
         KeyboardKey key;
         MouseButton mouse;
         bool value;

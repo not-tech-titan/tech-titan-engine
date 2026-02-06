@@ -18,6 +18,13 @@ namespace Physics
         return ::CheckCollisionRecs(rec1, rec2);
     }
 
+    // helper for entity and rectangle
+    bool CheckCollision(const Entity& entity, const Rectangle& rect)
+    {
+        Rectangle entityRect = { entity.position.x, entity.position.y, entity.size.x, entity.size.y };
+        return CheckCollisionRecs(entityRect, rect);
+    }
+
     void ResolveCollision(Entity& a, Entity& b)
     {
         // Simple elastic collision resolution. Temporary as fuck

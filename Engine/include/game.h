@@ -3,7 +3,8 @@
 #include "entity.h"
 #include "settings.h"
 
-class Game {
+class Game 
+{
 public:
     // Constructor now takes a reference to Settings
     Game(Settings& settings);  

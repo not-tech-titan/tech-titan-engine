@@ -1,6 +1,7 @@
 #include "settings.h"
 #include <fstream>
 #include <filesystem>
+#include "console.h"
 
 // -------------------------------------
 // CONFIG
@@ -66,6 +67,8 @@ void Settings::Load()
     }
 
     file.close();
+
+    Console::PrintLine("Settings Loaded.");
 }
 
 // -------------------------------------
@@ -102,6 +105,8 @@ void Settings::Save() const
     }
 
     file.close();
+
+    Console::PrintLine("Settings Saved.");
 }
 
 // -------------------------------------
@@ -116,12 +121,15 @@ void Settings::ApplyVideo() const
     {
         ToggleFullscreen();
     }
+
+    Console::PrintLine("Video Settings Applied.");
 }
 
 void Settings::ApplyAudio() const
 {
     SetMasterVolume(audio.masterVolume);
     // music/sfx scaling handled by audio system later
+    Console::PrintLine("Audio Settings Applied.");
 }
 
 // -------------------------------------
